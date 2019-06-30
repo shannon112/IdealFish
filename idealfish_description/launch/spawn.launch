@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 
-  <param name="robot_description" command="cat '$(find idealfish_description)/urdf/robot.urdf.xacro'"/>
+  <param name="robot_description" command="python $(find xacro)/xacro.py '$(find idealfish_description)/robot/idealfish.urdf.xacro'" />
 
   <!-- send fake joint values -->
   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
@@ -12,6 +12,6 @@
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
 
   <!-- Show in Rviz   -->
-  <node name="rviz" pkg="rviz" type="rviz" />
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find idealfish_description)/rviz/idealfish.rviz"/>
 
 </launch>

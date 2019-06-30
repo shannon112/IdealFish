@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-    <param name="robot_description" command="python $(find xacro)/xacro.py '$(find idealfish_description)/urdf/robot.urdf.xacro'" />
+    <param name="robot_description" command="python $(find xacro)/xacro.py '$(find idealfish_description)/robot/idealfish.urdf.xacro'" />
     <arg name="world_name" default="$(find ironfish_gazebo)/world/iceira302.world"/>
     <arg name="gui" default="true"/>
     <arg name="x" default="0"/>

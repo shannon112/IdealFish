@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<robot name="idealfish" xmlns:xacro="https://www.ros.org/wiki/xacro" >
+  <xacro:include filename="$(find idealfish_description)/urdf/base.urdf.xacro" />
+</robot>
