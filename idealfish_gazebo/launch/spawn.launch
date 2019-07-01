@@ -5,7 +5,7 @@
     <arg name="gui" default="true"/>
     <arg name="x" default="0"/>
     <arg name="y" default="0"/>
-    <arg name="z" default="0.5"/>
+    <arg name="z" default="0.11"/>
 
     <!-- Launch gazebo world.
     We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
@@ -16,7 +16,11 @@
 
     <!--spawn robot in gazebo env-->
     <node name="idealfish_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
-          args="-urdf -param robot_description -model m2wr -x $(arg x) -y $(arg y) -z $(arg z)" />
+          args="-urdf -param robot_description -model idealfish -x $(arg x) -y $(arg y) -z $(arg z)" />
 
     <include file="$(find idealfish_control)/launch/control.launch"/>
+
+    <!-- Show in Rviz   -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find idealfish_description)/rviz/idealfish.rviz"/>
+
 </launch>

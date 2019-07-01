@@ -5,36 +5,36 @@
   <xacro:include filename="$(find idealfish_description)/urdf/base.gazebo.xacro"/>
   <xacro:include filename="$(find idealfish_description)/urdf/wheel.macro.xacro"/>
   <xacro:include filename="$(find idealfish_description)/urdf/base.transmission.xacro"/>
+  <xacro:property name="M_PI" value="3.14159"/>
 
   <link name="base_link">
     <!-- pose and inertial -->
     <pose>0 0 0.1 0 0 0</pose>
 
+    <!-- base -->
     <inertial>
       <mass value="5"/>
-      <origin rpy="0 0 0" xyz="0 0 0.1"/>
-      <inertia ixx="0.0395416666667" ixy="0" ixz="0" iyy="0.106208333333" iyz="0" izz="0.106208333333"/>
+      <origin rpy="0 0 0" xyz="-0.09 0 0"/> <!--0.36/2 - 0.09-->
+      <inertia ixx="0.0560416666667" ixy="0" ixz="0" iyy="0.0395416666667" iyz="0" izz="0.0915"/>
     </inertial>
-
-    <collision name="collision_chassis">
+    <collision name="collision_base_link">
       <geometry>
-        <box size="0.5 0.3 0.07"/>
+        <box size="0.36 0.3 0.08"/>
       </geometry>
     </collision>
-
     <visual>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <origin rpy="0 0 0" xyz="-0.09 0 0"/>
       <geometry>
-        <box size="0.5 0.3 0.07"/>
+        <box size="0.36 0.3 0.08"/>
       </geometry>
       <material name="blue"/>
     </visual>
 
-    <!-- caster front -->
+    <!-- caster back -->
     <collision name="caster_front_collision">
-      <origin rpy=" 0 0 0" xyz="0.35 0 -0.05"/>
+      <origin rpy=" 0 0 0" xyz="-0.27 0 -0.07"/><!--0.36-0.09=0.27-->
       <geometry>
-        <sphere radius="0.05"/>
+        <sphere radius="0.03"/>
       </geometry>
       <surface>
         <friction>
@@ -48,9 +48,9 @@
       </surface>
     </collision>
     <visual name="caster_front_visual">
-      <origin rpy=" 0 0 0" xyz="0.2 0 -0.05"/>
+      <origin rpy=" 0 0 0" xyz="-0.27 0 -0.07"/><!--0.36-0.09=0.27-->
       <geometry>
-        <sphere radius="0.05"/>
+        <sphere radius="0.03"/>
       </geometry>
     </visual>
     </link>
@@ -60,8 +60,8 @@
   <xacro:link_wheel name="link_left_wheel"/>
 
   <!-- Create wheel right, left joint -->
-  <xacro:joint_wheel name="joint_right_wheel" child="link_right_wheel" origin_xyz="-0.05 0.15 0"/>
-  <xacro:joint_wheel name="joint_left_wheel" child="link_left_wheel" origin_xyz="-0.05 -0.15 0"/>
+  <xacro:joint_wheel name="joint_right_wheel" child="link_right_wheel" origin_xyz="-0.0 0.17 0"/><!--width = 0.3/2+0.005+0.03/2-->
+  <xacro:joint_wheel name="joint_left_wheel" child="link_left_wheel" origin_xyz="-0.0 -0.17 0"/><!--0.3/2+0.005+0.03/2-->
 
   <!-- Create wheel right, left transmission -->
   <xacro:right_wheel_trans/>

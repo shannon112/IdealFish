@@ -3,20 +3,20 @@
     <xacro:macro name="link_wheel" params="name">
         <link name="${name}">
             <inertial>
-              <mass value="0.2"/>
-              <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
-              <inertia ixx="0.000526666666667" ixy="0" ixz="0" iyy="0.000526666666667" iyz="0" izz="0.001"/>
+              <mass value="2.5"/>
+              <origin rpy="0 ${M_PI/2} ${M_PI/2}" xyz="0 0 0"/>
+              <inertia  ixx="0.02467" ixy="0" ixz="0" iyy="0.04411" iyz="0" izz="0.02467" />
             </inertial>
             <collision name="link_right_wheel_collision">
-              <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+              <origin rpy="0 ${M_PI/2} ${M_PI/2}" xyz="0 0 0"/>
               <geometry>
-                <cylinder length="0.04" radius="0.1"/>
+                <cylinder length="0.03" radius="0.1"/>
               </geometry>
             </collision>
             <visual name="${name}_visual">
-              <origin rpy="0 1.5707 1.5707" xyz="0 0 0"/>
+              <origin rpy="0 ${M_PI/2} ${M_PI/2}" xyz="0 0 0"/>
               <geometry>
-                <cylinder length="0.04" radius="0.1"/>
+                <cylinder length="0.03" radius="0.1"/>
               </geometry>
             </visual>
         </link>
