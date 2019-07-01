@@ -6,7 +6,7 @@
   <xacro:include filename="$(find idealfish_description)/urdf/wheel.macro.xacro"/>
   <xacro:include filename="$(find idealfish_description)/urdf/base.transmission.xacro"/>
 
-  <link name="link_chassis">
+  <link name="base_link">
     <!-- pose and inertial -->
     <pose>0 0 0.1 0 0 0</pose>
 
