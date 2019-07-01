@@ -5,7 +5,7 @@
     <arg name="gui" default="true"/>
     <arg name="x" default="0"/>
     <arg name="y" default="0"/>
-    <arg name="z" default="0.11"/>
+    <arg name="z" default="0.101"/>
 
     <!-- Launch gazebo world.
     We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
