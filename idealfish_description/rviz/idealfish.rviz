@@ -26,7 +26,9 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: LaserScan
+Toolbars:
+  toolButtonStyle: 2
 Visualization Manager:
   Class: ""
   Displays:
@@ -53,7 +55,31 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
+        base_imu_link:
+          Value: true
         base_link:
+          Value: true
+        body_link:
+          Value: true
+        camera_color_frame:
+          Value: true
+        camera_color_optical_frame:
+          Value: true
+        camera_depth_frame:
+          Value: true
+        camera_depth_optical_frame:
+          Value: true
+        camera_left_ir_frame:
+          Value: true
+        camera_left_ir_optical_frame:
+          Value: true
+        camera_link:
+          Value: true
+        camera_right_ir_frame:
+          Value: true
+        camera_right_ir_optical_frame:
+          Value: true
+        hokuyo_link:
           Value: true
         link_left_wheel:
           Value: true
@@ -61,18 +87,44 @@ Visualization Manager:
           Value: true
         odom:
           Value: true
+        pack_link:
+          Value: true
+        sensor_link:
+          Value: true
       Marker Scale: 1
       Name: TF
       Show Arrows: true
       Show Axes: true
       Show Names: true
       Tree:
+        base_link:
+          body_link:
+            sensor_link:
+              base_imu_link:
+                {}
+              camera_link:
+                camera_depth_frame:
+                  camera_color_frame:
+                    camera_color_optical_frame:
+                      {}
+                  camera_depth_optical_frame:
+                    {}
+                  camera_left_ir_frame:
+                    camera_left_ir_optical_frame:
+                      {}
+                  camera_right_ir_frame:
+                    camera_right_ir_optical_frame:
+                      {}
+              hokuyo_link:
+                {}
+              pack_link:
+                {}
+          link_left_wheel:
+            {}
+          link_right_wheel:
+            {}
         odom:
-          base_link:
-            link_left_wheel:
-              {}
-            link_right_wheel:
-              {}
+          {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -85,7 +137,59 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        base_imu_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         base_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        body_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        camera_color_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_color_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_depth_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_depth_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_left_ir_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_left_ir_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        camera_right_ir_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        camera_right_ir_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        hokuyo_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -96,6 +200,16 @@ Visualization Manager:
           Show Trail: false
           Value: true
         link_right_wheel:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        pack_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        sensor_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
@@ -121,9 +235,9 @@ Visualization Manager:
       Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 4096
+      Max Intensity: 4.20206945e-37
       Min Color: 0; 0; 0
-      Min Intensity: 0
+      Min Intensity: 4.20206945e-37
       Name: LaserScan
       Position Transformer: XYZ
       Queue Size: 10
@@ -172,26 +286,21 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Class: rviz/Orbit
-      Distance: 1.20518577
+      Angle: 0
+      Class: rviz/TopDownOrtho
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
-      Focal Point:
-        X: -0.0652196407
-        Y: 0.0910559297
-        Z: 0.0375445485
-      Focal Shape Fixed Size: true
-      Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.303180724
+      Scale: 218.931793
       Target Frame: <Fixed Frame>
-      Value: Orbit (rviz)
-      Yaw: 2.32566118
+      Value: TopDownOrtho (rviz)
+      X: -0.0631900951
+      Y: 0.0909288898
     Saved: ~
 Window Geometry:
   Displays:

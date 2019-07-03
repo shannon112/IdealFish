@@ -1,7 +1,6 @@
 <?xml version="1.0" ?>
 
 <robot name="idealfish" xmlns:xacro="https://www.ros.org/wiki/xacro" >
-  <xacro:include filename="$(find idealfish_description)/urdf/base.materials.xacro"/>
   <xacro:include filename="$(find idealfish_description)/urdf/base.gazebo.xacro"/>
   <xacro:include filename="$(find idealfish_description)/urdf/wheel.macro.xacro"/>
   <xacro:include filename="$(find idealfish_description)/urdf/base.transmission.xacro"/>

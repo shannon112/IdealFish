@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-    <param name="robot_description" command="python $(find xacro)/xacro.py '$(find idealfish_description)/robot/idealfish.urdf.xacro'" />
+    <param name="robot_description" command="python $(find xacro)/xacro.py '$(find idealfish_description)/robot/idealfish_flying.urdf.xacro'" />
     <arg name="world_name" default="$(find ironfish_gazebo)/world/iceira302.world"/>
     <arg name="gui" default="true"/>
     <arg name="x" default="0"/>
@@ -19,6 +19,11 @@
           args="-urdf -param robot_description -model idealfish -x $(arg x) -y $(arg y) -z $(arg z)" />
 
     <include file="$(find idealfish_control)/launch/control.launch"/>
+
+    <!--Gui steering console (Optional)-->
+    <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
+      <param name="default_topic" value="idealfish_velocity_controller/cmd_vel"/>
+    </node>
 
     <!-- Show in Rviz   -->
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find idealfish_description)/rviz/idealfish.rviz"/>

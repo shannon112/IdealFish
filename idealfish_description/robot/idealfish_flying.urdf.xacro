@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<robot name="idealfish" xmlns:xacro="https://www.ros.org/wiki/xacro" >
+  <xacro:include filename="$(find idealfish_description)/urdf/base.urdf.xacro" />
+  <xacro:include filename="$(find flyingcar_description)/urdf/flyingcar.urdf.xacro" />
+  <xacro:include filename="$(find idealfish_description)/urdf/base.materials.xacro"/>
+
+  <xacro:flyingcar parent="sensor_link"/>
+
+  <joint name="sensor_link_joint" type="fixed">
+    <origin xyz="0 0 0.5" rpy="0 0 0"/>
+    <parent link="body_link"/>
+    <child link="sensor_link" />
+  </joint>
+
+  <link name="sensor_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.01 0.01 0.01" />
+      </geometry>
+      <material name="White" />
+    </visual>
+  </link>
+
+</robot>
