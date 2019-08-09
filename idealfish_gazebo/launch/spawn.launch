@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-    <param name="robot_description" command="python $(find xacro)/xacro.py '$(find idealfish_description)/robot/idealfish_flying.urdf.xacro'" />
     <arg name="world_name" default="$(find ironfish_gazebo)/world/iceira302.world"/>
     <arg name="gui" default="true"/>
-    <arg name="x" default="0"/>
-    <arg name="y" default="0"/>
-    <arg name="z" default="0.101"/>
 
     <!-- Launch gazebo world.
     We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
@@ -15,10 +11,20 @@
     </include>
 
     <!--spawn robot in gazebo env-->
+    <arg name="x" default="0"/>
+    <arg name="y" default="0"/>
+    <arg name="z" default="0.101"/>
+    <param name="robot_description" command="python $(find xacro)/xacro.py '$(find idealfish_description)/robot/idealfish_flying.urdf.xacro'" />
     <node name="idealfish_spawn" pkg="gazebo_ros" type="spawn_model" output="screen"
           args="-urdf -param robot_description -model idealfish -x $(arg x) -y $(arg y) -z $(arg z)" />
 
-    <include file="$(find idealfish_control)/launch/control.launch"/>
+    <!--controllers node-->
+    <rosparam command="load" file="$(find idealfish_control)/config/control.yaml" />
+    <node name="base_controller_spawner" pkg="controller_manager" type="spawner"
+          args="idealfish_joint_publisher idealfish_velocity_controller"/>
+
+    <!--state publisher-->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
     <!--Gui steering console (Optional)-->
     <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
